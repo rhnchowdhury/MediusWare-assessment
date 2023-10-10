@@ -4,8 +4,21 @@ const Problem1 = () => {
 
     const [show, setShow] = useState('all');
 
+    const [name, setName] = useState('');
+    const [status, setStatus] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        setName(name);
+        const status = e.target.stat.value;
+        setStatus(status)
+    }
+
     const handleClick = (val) => {
         setShow(val);
+        setName(name);
+        setStatus(status);
     }
 
     return (
@@ -14,12 +27,12 @@ const Problem1 = () => {
             <div className="row justify-content-center mt-5">
                 <h4 className='text-center text-uppercase mb-5'>Problem-1</h4>
                 <div className="col-6 ">
-                    <form className="row gy-2 gx-3 align-items-center mb-4">
+                    <form className="row gy-2 gx-3 align-items-center mb-4" onSubmit={handleSubmit}>
                         <div className="col-auto">
-                            <input type="text" className="form-control" placeholder="Name" />
+                            <input type="text" name='name' className="form-control" placeholder="Name" />
                         </div>
                         <div className="col-auto">
-                            <input type="text" className="form-control" placeholder="Status" />
+                            <input type="text" name='stat' className="form-control" placeholder="Status" />
                         </div>
                         <div className="col-auto">
                             <button type="submit" className="btn btn-primary">Submit</button>
@@ -42,12 +55,11 @@ const Problem1 = () => {
                     <table className="table table-striped ">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Name: {name}</th>
+                                <th scope="col">Status: {status}</th>
                             </tr>
                         </thead>
                         <tbody>
-
                         </tbody>
                     </table>
                 </div>
